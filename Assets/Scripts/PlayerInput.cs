@@ -6,7 +6,8 @@ namespace ShootEm
     {
         [SerializeField] private Vector2 _mouseSensitivity = new Vector2(0.1f, 0.2f);
         
-        [SerializeField] private FirstPersonCamera firstPersonCamera;
+        [SerializeField] private RestrictedRotator cameraRotator;
+        [SerializeField] private Gun _gun;
         
         private InputActions _input;
 
@@ -21,7 +22,9 @@ namespace ShootEm
             _input = new InputActions();
 
             _input.Game.Look.performed += context => 
-                firstPersonCamera.Rotation += context.ReadValue<Vector2>() * _mouseSensitivity;
+                cameraRotator.Rotation += context.ReadValue<Vector2>() * _mouseSensitivity;
+
+            _input.Game.Shoot.performed += context => _gun.Shoot();
         }
     }
 }
