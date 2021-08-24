@@ -2,24 +2,24 @@ using UnityEngine;
 
 namespace ShootEm
 {
-    [RequireComponent(typeof(Camera))]
     public class RestrictedRotator : MonoBehaviour
     {
-        [SerializeField] private Vector2 _minRotation = new Vector2(-90f, -90f);
-        [SerializeField] private Vector2 _maxRotation = new Vector2(90f, 90f);
+        [SerializeField] private Vector3 _minRotation = new Vector3(-90f, -90f);
+        [SerializeField] private Vector3 _maxRotation = new Vector3(90f, 90f);
 
-        public Vector2 Rotation
+        public Vector3 Rotation
         {
             get => _rotation;
             set
-            { 
-                _rotation = new Vector2(
-                    Mathf.Clamp(value.x, _minRotation.x, _maxRotation.x), 
-                    Mathf.Clamp(value.y, _minRotation.y, _maxRotation.y));
-
-                transform.eulerAngles = new Vector3(-_rotation.y, _rotation.x);
+            {
+                _rotation = new Vector3(
+                    Mathf.Clamp(value.x, _minRotation.x, _maxRotation.x),
+                    Mathf.Clamp(value.y, _minRotation.y, _maxRotation.y),
+                    Mathf.Clamp(value.z, _minRotation.z, _maxRotation.z));
+                
+                transform.eulerAngles = _rotation;
             }
         }
-        private Vector2 _rotation;
+        private Vector3 _rotation;
     }
 }

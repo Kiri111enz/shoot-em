@@ -21,8 +21,11 @@ namespace ShootEm
         {
             _input = new InputActions();
 
-            _input.Game.Look.performed += context => 
-                cameraRotator.Rotation += context.ReadValue<Vector2>() * _mouseSensitivity;
+            _input.Game.Look.performed += context =>
+            {
+                var rotation = context.ReadValue<Vector2>() * _mouseSensitivity;
+                cameraRotator.Rotation += new Vector3(-rotation.y, rotation.x);
+            };
 
             _input.Game.Shoot.performed += context => _gun.Shoot();
         }

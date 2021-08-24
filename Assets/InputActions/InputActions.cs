@@ -35,6 +35,14 @@ namespace ShootEm
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d1d374e-4ef5-4564-8b2a-e6ebc236a4f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -59,6 +67,17 @@ namespace ShootEm
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd853fe5-7682-42b1-9316-16a96cf14a55"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -69,6 +88,7 @@ namespace ShootEm
             m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
             m_Game_Look = m_Game.FindAction("Look", throwIfNotFound: true);
             m_Game_Shoot = m_Game.FindAction("Shoot", throwIfNotFound: true);
+            m_Game_Aim = m_Game.FindAction("Aim", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -120,12 +140,14 @@ namespace ShootEm
         private IGameActions m_GameActionsCallbackInterface;
         private readonly InputAction m_Game_Look;
         private readonly InputAction m_Game_Shoot;
+        private readonly InputAction m_Game_Aim;
         public struct GameActions
         {
             private @InputActions m_Wrapper;
             public GameActions(@InputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Look => m_Wrapper.m_Game_Look;
             public InputAction @Shoot => m_Wrapper.m_Game_Shoot;
+            public InputAction @Aim => m_Wrapper.m_Game_Aim;
             public InputActionMap Get() { return m_Wrapper.m_Game; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -141,6 +163,9 @@ namespace ShootEm
                     @Shoot.started -= m_Wrapper.m_GameActionsCallbackInterface.OnShoot;
                     @Shoot.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnShoot;
                     @Shoot.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnShoot;
+                    @Aim.started -= m_Wrapper.m_GameActionsCallbackInterface.OnAim;
+                    @Aim.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnAim;
+                    @Aim.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnAim;
                 }
                 m_Wrapper.m_GameActionsCallbackInterface = instance;
                 if (instance != null)
@@ -151,6 +176,9 @@ namespace ShootEm
                     @Shoot.started += instance.OnShoot;
                     @Shoot.performed += instance.OnShoot;
                     @Shoot.canceled += instance.OnShoot;
+                    @Aim.started += instance.OnAim;
+                    @Aim.performed += instance.OnAim;
+                    @Aim.canceled += instance.OnAim;
                 }
             }
         }
@@ -159,6 +187,7 @@ namespace ShootEm
         {
             void OnLook(InputAction.CallbackContext context);
             void OnShoot(InputAction.CallbackContext context);
+            void OnAim(InputAction.CallbackContext context);
         }
     }
 }
