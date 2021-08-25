@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace ShootEm
+namespace ShootEm.Shooting
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]
-    public class Bullet : MonoBehaviour
+    internal class Bullet : MonoBehaviour
     {
         [Tooltip("Rigidbody mass and gravity are NOT ignored!")] [SerializeField] private float _speed;
         [SerializeField] private float _selfDestructionDelay = 5;

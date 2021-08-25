@@ -446,6 +446,8 @@ GameObject:
   - component: {fileID: 2910608971856090659}
   - component: {fileID: 2910608971576013461}
   - component: {fileID: 2910608971856090656}
+  - component: {fileID: -4577060233687604327}
+  - component: {fileID: -2067472769243439282}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -508,41 +510,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootFrom: {fileID: 2910608970572158578}
   _bulletPrefab: {fileID: 4507983994168679609, guid: b25a6474a1e97364cb3e5a18dca2ed51, type: 3}
-  _recoilCurve:
+--- !u!114 &-4577060233687604327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910608971576013450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4579bed74c752f49836d17dfca92be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireTriggerName: Fired
+--- !u!114 &-2067472769243439282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910608971576013450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab517dd49e22ba4bbabc8d31d129100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: -15
-      inSlope: -187.98561
-      outSlope: -187.98561
+      inSlope: -214.3852
+      outSlope: -214.3852
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.13513513
+      outWeight: 0.10531436
     - serializedVersion: 3
       time: 0.1
       value: -25
-      inSlope: -2.9130886
-      outSlope: -2.9130886
+      inSlope: 1.0901408
+      outSlope: 1.0901408
       tangentMode: 0
       weightedMode: 0
-      inWeight: 1
-      outWeight: 0.053115614
+      inWeight: 0.34794992
+      outWeight: 0.068493344
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 6.6212735
-      outSlope: 6.6212735
+      inSlope: 75.14406
+      outSlope: 75.14406
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.25704476
-      outWeight: 0.072578795
+      inWeight: 0.04271474
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _recoilDuration: 0.33333334
-  _fireTriggerName: Fired
+  _duration: 0.33333334
 --- !u!1 &2910608971664679341
 GameObject:
   m_ObjectHideFlags: 0

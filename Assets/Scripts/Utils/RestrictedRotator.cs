@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ShootEm
+namespace ShootEm.Utils
 {
     public class RestrictedRotator : MonoBehaviour
     {

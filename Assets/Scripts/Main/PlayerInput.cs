@@ -1,6 +1,8 @@
+using ShootEm.Shooting;
+using ShootEm.Utils;
 using UnityEngine;
 
-namespace ShootEm
+namespace ShootEm.Main
 {
     public class PlayerInput : MonoBehaviour
     {
