@@ -2,25 +2,14 @@ using UnityEngine;
 
 namespace ShootEm.Shooting
 {
-    [RequireComponent(typeof(Gun))]
     [RequireComponent(typeof(Animator))]
-    internal class GunAnimator : MonoBehaviour
+    internal class GunAnimator : GunAddon
     {
         [SerializeField] private string _fireTriggerName = "Fired";
         private Animator _animator;
         
-        private Gun _gun;
-        
-        private void Awake()
-        {
-            _gun = GetComponent<Gun>();
-            _animator = GetComponent<Animator>();
-        }
+        protected override void OnAwake() => _animator = GetComponent<Animator>();
 
-        private void OnEnable() => _gun.Shot += OnGunShot;
-
-        private void OnDisable() => _gun.Shot -= OnGunShot;
-
-        private void OnGunShot() => _animator.SetTrigger(_fireTriggerName);
+        protected override void OnGunShot() => _animator.SetTrigger(_fireTriggerName);
     }
 }

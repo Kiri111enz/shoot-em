@@ -3,25 +3,13 @@ using UnityEngine;
 
 namespace ShootEm.Shooting
 {
-    [RequireComponent(typeof(Gun))]
-    internal class GunRecoil : MonoBehaviour
+    internal class GunRecoil : GunAddon
     {
         [Tooltip("Timeline [0;1] is used.")] [SerializeField] private AnimationCurve _curve;
         [SerializeField] private float _duration;
         private float _timeRemaining;
 
-        private Gun _gun;
-
-        private void Awake()
-        {
-            _gun = GetComponent<Gun>();
-        }
-
-        private void OnEnable() => _gun.Shot += OnGunShot;
-
-        private void OnDisable() => _gun.Shot -= OnGunShot;
-
-        private void OnGunShot()
+        protected override void OnGunShot()
         { 
             if (_timeRemaining <= 0) 
             { 
