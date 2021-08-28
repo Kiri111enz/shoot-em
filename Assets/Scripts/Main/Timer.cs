@@ -10,7 +10,6 @@ namespace ShootEm.Main
     {
         [SerializeField] private string _format = @"ss\:ff";
         [SerializeField] private TMP_Text _text;
-        [SerializeField] private float _updateFrequency = 0.01f;
         
         [field: SerializeField] public float Time { get; private set; }
 
@@ -19,8 +18,8 @@ namespace ShootEm.Main
         protected override IEnumerator OnRepeat()
         {
             _text.text = TimeText;
-            yield return new WaitForSeconds(_updateFrequency);
-            Time += _updateFrequency;
+            yield return null;
+            Time += UnityEngine.Time.deltaTime;
         }
 
         private void Awake() => StartCoroutine(BeginRepeating());
