@@ -7,8 +7,8 @@ namespace ShootEm.Main
     {
         [SerializeField] private TMP_Text _text;
         
-        private int _hitCount;
+        public int HitCount { get; private set; }
 
-        public void OnTargetHit() => _text.text = (++_hitCount).ToString();
+        public void OnTargetHit() => _text.text = (++HitCount).ToString();
     }
 }
