@@ -5,17 +5,17 @@ namespace ShootEm.Shooting
     [RequireComponent(typeof(Gun))]
     internal abstract class GunAddon : MonoBehaviour
     {
-        private Gun _gun;
+        protected Gun Gun { get; private set; }
 
         private void Awake()
         {
-            _gun = GetComponent<Gun>();
+            Gun = GetComponent<Gun>();
             OnAwake();
         }
 
-        private void OnEnable() => _gun.Shot += OnGunShot;
+        private void OnEnable() => Gun.Shot += OnGunShot;
 
-        private void OnDisable() => _gun.Shot -= OnGunShot;
+        private void OnDisable() => Gun.Shot -= OnGunShot;
         
         protected virtual void OnAwake() { }
         

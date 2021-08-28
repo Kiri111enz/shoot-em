@@ -30,6 +30,9 @@ namespace ShootEm.Main
             };
 
             _input.Game.Shoot.performed += context => _gun.Shoot();
+
+            _input.Game.Aim.started += context => _gun.IsAiming = true;
+            _input.Game.Aim.canceled += context => _gun.IsAiming = false;
         }
     }
 }
