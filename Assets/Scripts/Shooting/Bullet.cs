@@ -15,8 +15,11 @@ namespace ShootEm.Shooting
             Destroy(gameObject, _selfDestructionDelay);
         }
 
-        private void OnCollisionEnter()
+        private void OnCollisionEnter(Collision other)
         {
+            if (other.gameObject.TryGetComponent(out Target target))
+                target.Hit.Invoke();
+            
             Destroy(gameObject);
         }
     }
