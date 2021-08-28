@@ -2,7 +2,8 @@
     "name": "Shooting",
     "rootNamespace": "ShootEm",
     "references": [
-        "GUID:454edcb387753a34fb6a4b1c9367d163"
+        "GUID:454edcb387753a34fb6a4b1c9367d163",
+        "GUID:57a6d82589ae03c4cabdc058f719f231"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

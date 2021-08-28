@@ -58,7 +58,7 @@ namespace ShootEm.Shooting
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(_shootFrom.position, transform.forward * 100);
+            Gizmos.DrawRay(_shootFrom.position, _shootFrom.forward * 100);
         }
         
         public void Shoot()
